@@ -46,7 +46,59 @@
             loaded = true;
             var mobile = window.isDevice;
             var koef = mobile ? 0.5 : 1;
-            var canvas = document.getElementById('heart');
+            var canvas = document.getElementById('heart');<css-doodle id="doodle">
+
+  :doodle {
+
+    @grid: 8x1 / 50vmin;
+
+  }
+
+  @size: calc(100% - @i() * 3%);
+
+  @place-cell: center;
+
+  @shape: heart;
+
+  overflow: hidden;
+
+  
+
+  :after {
+
+    content: '';
+
+    @size: calc(100% - 5px);
+
+    @shape: heart;
+
+    background: var(--bg);
+
+    z-index: 1;
+
+  }
+
+  :before {
+
+    content: '';
+
+    position: absolute;
+
+    @size: 200%;
+
+    background: conic-gradient(
+
+      @pd(#78E7D4, #E3383F, #EFF4DD, #F2A341) @p(10%, 40%),
+
+      transparent 0
+
+    );
+
+    animation: cycle @r(3s, 5s, .1) linear infinite;
+
+    animation-delay: -@r(8s);
+
+    z-index: 0;
             var ctx = canvas.getContext('2d');
             var width = canvas.width = koef * innerWidth;
             var height = canvas.height = koef * innerHeight;
